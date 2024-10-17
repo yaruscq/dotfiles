@@ -1,0 +1,4 @@
+export SECRET_KEY="xxxxxxxxxxxxxx"
+export SQLALCHEMY_DATABASE_URI="sqlite:///instance/site.db"
+export EMAIL_USER="xxxxx"
+export EMAIL_PASS="xxxxxxxxxxxx"

@@ -1,0 +1,54 @@
+# PS1='%n@%m %~$ '
+# %n is the user logged in
+# %m is the machine name
+# %~ gives the path relative to HOME, if path begins with HOME.
+
+# PS1="$(tput setaf 160)%n$(tput setaf 004)@%m$(tput setaf 046)%~ $(tput sgr0)$ ";
+# PS1="$(tput setaf 64)%n$(tput setaf 37)@%m$(tput setaf 124)%~ $(tput sgr0)$ ";
+
+
+# Using tput for colors and formatting.
+tput sgr0 # reset colors
+bold=$(tput bold)
+reset=$(tput sgr0)
+blue=$(tput setaf 153)
+steel_blue=$(tput setaf 67)
+cyan=$(tput setaf 37);
+green=$(tput setaf 71)
+orange=$(tput setaf 166)
+red=$(tput setaf 124)
+red2=$(tput setaf 167)
+white=$(tput setaf 15)
+yellow=$(tput setaf 228)
+
+# Define a function to dynamically update the prompt
+set_prompt2() {
+    if [[ -n "$VIRTUAL_ENV" ]]; then
+        # If virtual environment is active
+        venv_name=$(basename "$VIRTUAL_ENV")
+        PS1="\[$steel_blue\]($venv_name) "  # Virtual environment name in steel blue
+        PS1+="\[$blue\]\u"  # Username in blue
+        PS1+="\[$white\]"
+        PS1+="\[$cyan\]@\h "  # Hostname in yellow
+        PS1+="in \[$orange\]\w "  # Current working directory in green
+         # PS1+='${PWD#"${PWD%/*/*}/"} '  # show last 2 dirs
+        PS1+="\[$steel_blue\]($venv_name)"  # Repeat virtual environment name
+        PS1+=$'\n'
+        PS1+="\[$reset\]~~ "  # Command prompt ($) with reset color
+    else
+        # If no virtual environment is active (normal mode)
+        PS1="\[$red\]\u"  # Username in red
+        PS1+="\[$yellow\]@\h "  # Hostname in yellow
+        PS1+="\[$green\]in \w"  # Current working directory in green
+        PS1+=$'\n'
+        PS1+="\[$reset\]$ "  # Command prompt ($) with reset color
+    fi
+}
+
+# Hook into the precmd function to dynamically change the prompt before every command
+precmd() {
+    set_prompt2
+}
+
+# Set the prompt when the shell starts
+set_prompt2
