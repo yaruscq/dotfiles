@@ -41,6 +41,7 @@ alias gd="git diff";
 alias ga="git add .";
 alias gb="git branch";
 alias gbr="git branch remote"
+alias gl="git log --oneline"
 alias gfr="git remote update"
 alias gbn="git checkout -B "
 # alias grf="git reflog";
