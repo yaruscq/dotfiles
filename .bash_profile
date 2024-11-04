@@ -22,7 +22,6 @@ export PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"
 
 
 # PATH="/Library/Frameworks/Python.framework/Versions/3.10/bin:${PATH}"
-PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"
 
 
 for file in ~/.bashFilesFolder/.{bash_path,bash_prompt,bash_exports,bash_aliases,.ash_functions,bash_extra}; do
