@@ -5,8 +5,6 @@ echo 'BASH_PROFILE fr CQ'
 # Setting PATH for Python 3.10
 # The original version is saved in .bash_profile.pysave
 
-echo 'BASH_PROFILE fr CQ' 
-
 # Setup For Pyenv shell
 export PATH="$HOME/.pyenv/bin:$PATH"
 eval "$(pyenv init --path)"
